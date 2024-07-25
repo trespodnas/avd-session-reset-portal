@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Submission Success</title>
+    <style>
+        body {
+            background-color: #0033A0; /* USAF Blue */
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            text-align: center;
+        }
+        img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        setTimeout(function() {
+            window.location.href = "/";
+        }, 5000);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='usaf_logo.png') }}" alt="USAF Logo">
+        <h1>{{ message }}</h1>
+        <p>You will be redirected to the main page in 5 seconds...</p>
+    </div>
+</body>
+</html>

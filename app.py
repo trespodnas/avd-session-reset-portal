@@ -18,8 +18,12 @@ def index():
 @app.route('/get-email', methods=['GET'])
 def get_email():
     email = session.get('email')  # Retrieve email from session
-    processed_email = end_user_avd_session(email)
-    return f"Email retrieved: {processed_email}"
+    if email:
+        processed_email = end_user_avd_session(email)
+        session.pop('email', None)  # Clear the session
+        message = f"Session email address {email} successfully disconnected. {processed_email}"
+        return render_template('success.html', message=message)
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
