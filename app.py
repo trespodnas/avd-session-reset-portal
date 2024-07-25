@@ -21,7 +21,7 @@ def get_email():
     if email:
         processed_email = end_user_avd_session(email)
         session.pop('email', None)  # Clear the session
-        message = f"Session email address {email} successfully disconnected. {processed_email}"
+        message = f"Session email address {email} successfully disconnected."
         return render_template('success.html', message=message)
     return redirect(url_for('index'))
 
