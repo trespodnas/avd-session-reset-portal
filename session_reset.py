@@ -8,6 +8,7 @@ AZURE_RESOURCE_GROUP_NAME = ''
 AZURE_HOST_POOL_NAME = ''
 
 
+# TODO add error handling
 def create_avd_client():
     credential = DefaultAzureCredential(authority=AzureAuthorityHosts.AZURE_GOVERNMENT)
     return DesktopVirtualizationMgmtClient(
@@ -35,7 +36,7 @@ def list_host_pool_user_session_data():
         print(f'nodata, {__name__}')
         return 1
 
-
+# TODO convert loop to generator
 def find_user_avd_session_data(user_upn):
     user_email = user_upn.strip()
     if '@' in user_email:
