@@ -1,11 +1,14 @@
+import  random
+import string
+
 from session_reset import end_user_avd_session
 from flask import Flask, render_template, request, redirect, url_for, session
 
 
-# from email_processor import process_email  # Import your function
-
+random_string_for_flask = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits)
+                                  for _ in range(50))
 app = Flask(__name__)
-app.secret_key = 'DNT5XgwYsnHZFLG3brvVp8RJQedqjf9myBEuCAPt7WcKM6S24z'
+app.secret_key = random_string_for_flask
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

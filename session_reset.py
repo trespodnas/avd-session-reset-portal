@@ -5,6 +5,7 @@ from azure.mgmt.desktopvirtualization import DesktopVirtualizationMgmtClient
 AZURE_SUBSCRIPTION_ID = ''
 AZURE_RESOURCE_GROUP_NAME = ''
 AZURE_HOST_POOL_NAME = ''
+AZURE_DESKTOPVIRTUALIZATION_MGMT_CLIENT_API_VERSION = '2019-09-24-preview'
 
 
 # TODO add error handling
@@ -15,7 +16,7 @@ def create_avd_client():
         subscription_id=AZURE_SUBSCRIPTION_ID,
         base_url="https://management.usgovcloudapi.net",
         credential_scopes=['https://management.usgovcloudapi.net/.default'],
-        api_version='2019-09-24-preview'
+        api_version= AZURE_DESKTOPVIRTUALIZATION_MGMT_CLIENT_API_VERSION
     )
 
 
@@ -37,6 +38,7 @@ def list_host_pool_user_session_data():
 
 # TODO convert loop to generator
 def find_user_avd_session_data(user_upn):
+    # TODO add error handling
     user_email = user_upn.strip()
     # TODO better validation ?
     if '@' in user_email:
@@ -52,6 +54,7 @@ def find_user_avd_session_data(user_upn):
 
 
 def end_user_avd_session(user_upn):
+    # TODO add error handling
     parse_session_host_and_user_session_id = find_user_avd_session_data(user_upn)[
         'session_host_name'].split('/')
     session_host_name = parse_session_host_and_user_session_id[1]
