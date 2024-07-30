@@ -1,5 +1,4 @@
 
-from flask import Flask, jsonify
 from azure.identity import DefaultAzureCredential, AzureAuthorityHosts
 from azure.mgmt.desktopvirtualization import DesktopVirtualizationMgmtClient
 
@@ -39,6 +38,7 @@ def list_host_pool_user_session_data():
 # TODO convert loop to generator
 def find_user_avd_session_data(user_upn):
     user_email = user_upn.strip()
+    # TODO better validation ?
     if '@' in user_email:
         for data in list_host_pool_user_session_data():
             output_format = {"session_host_name": data.name, "upn": data.user_principal_name,
