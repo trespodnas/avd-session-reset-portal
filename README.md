@@ -9,6 +9,6 @@ Currently in development, not recomended for use.
 * re-work auth to use app. registration 
 * error handling
 * re-work session removal to attempt graceful logoff first 
-* create chrome policy to app.
+* create chrome policy for app.
 * logging
 * create generic install
