@@ -8,7 +8,7 @@ Currently in development, not recomended for use.
 * scope to be used in avd remote app
 * re-work auth to use app. registration 
 * error handling
-* re-work session removal to do graceful logoff first 
+* re-work session removal to attempt graceful logoff first 
 * create chrome policy to app.
 * logging
 * create generic install
