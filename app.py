@@ -1,7 +1,7 @@
 import  random
 import string
 
-from session_reset import end_user_avd_session
+from session_reset import end_user_session
 from flask import Flask, render_template, request, redirect, url_for, session
 
 
