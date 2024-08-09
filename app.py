@@ -22,7 +22,7 @@ def index():
 def get_email():
     email = session.get('email')  # Retrieve email from session
     if email:
-        processed_email = end_user_avd_session(email)
+        processed_email = end_user_session(email)
         session.pop('email', None)  # Clear the session
         message = f"Session email address {email} successfully disconnected."
         return render_template('success.html', message=message)
