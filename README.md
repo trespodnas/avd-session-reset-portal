@@ -1,7 +1,7 @@
 # az-gov-avd-session-reset-portal
 A simple flask app that removes avd users disconnected sessions.<br>
 Scoped to be used in azure gov cloud. <br>
-Currently in development, not recomended for use.
+Currently in development, not recommended for use.
 
 
 ### TODO:
@@ -9,6 +9,8 @@ Currently in development, not recomended for use.
 * re-work auth to use app. registration 
 * error handling
 * re-work session removal to attempt graceful logoff first 
-* create chrome policy for app.
+* create chrome policy for app. 
 * logging
 * create generic install
+* include commercial support
+* 
