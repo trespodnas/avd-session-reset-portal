@@ -68,6 +68,7 @@ def find_user_session_data(user_email):
     return user_sessions
 
 def end_user_session(user_email):
+    global parse_session_host_application_type
     avd_client = create_avd_client_session()
     user_sessions = find_user_session_data(user_email)
 
@@ -87,7 +88,13 @@ def end_user_session(user_email):
     if not user_sessions:
         print(f'No sessions found for: {user_email}')
     else :
-        print(f'{len(user_sessions)} sessions ended for user: {user_email}')
+        if parse_session_host_application_type != 'RemoteApp':
+            print(f'{len(user_sessions)} sessions ended for user: {user_email}')
+        else:
+            user_sessions_total = len(user_sessions)
+            user_sessions_total = user_sessions_total - 1
+            print(f'{len(user_sessions_total)} sessions ended for user: {user_email}')
+
 
 
 if __name__ == '__main__':

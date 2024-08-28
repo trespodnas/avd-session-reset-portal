@@ -5,7 +5,7 @@ def get_local_user_upn():
     if output.returncode == 0:
         return output.stdout.strip().lower()
     else:
-        #TODO add logging
+        # TODO add logging
         print('Error retrieving local user upn')
         return None
 
