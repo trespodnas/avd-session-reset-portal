@@ -3,7 +3,7 @@ from azure.mgmt.desktopvirtualization import DesktopVirtualizationMgmtClient
 
 AZURE_SUBSCRIPTION_ID = ''
 AZURE_RESOURCE_GROUP_NAME = ''
-MI_ID = ''
+MANAGED_IDENTITY_CLIENT_ID = ''
 AZURE_DESKTOP_VIRTUALIZATION_MGMT_CLIENT_API_VERSION = '2019-09-24-preview'
 
 api_data = {}
@@ -11,7 +11,7 @@ api_data = {}
 
 # TODO add error handling
 def create_avd_client_session():
-    credential = ManagedIdentityCredential(authority=AzureAuthorityHosts.AZURE_GOVERNMENT, client_id=MI_ID)
+    credential = ManagedIdentityCredential(authority=AzureAuthorityHosts.AZURE_GOVERNMENT, client_id=MANAGED_IDENTITY_CLIENT_ID)
     return DesktopVirtualizationMgmtClient(
         credential=credential,
         subscription_id=AZURE_SUBSCRIPTION_ID,
@@ -68,7 +68,6 @@ def find_user_session_data(user_email):
     return user_sessions
 
 def end_user_session(user_email):
-    global parse_session_host_application_type
     avd_client = create_avd_client_session()
     user_sessions = find_user_session_data(user_email)
 
@@ -88,13 +87,7 @@ def end_user_session(user_email):
     if not user_sessions:
         print(f'No sessions found for: {user_email}')
     else :
-        if parse_session_host_application_type != 'RemoteApp':
-            print(f'{len(user_sessions)} sessions ended for user: {user_email}')
-        else:
-            user_sessions_total = len(user_sessions)
-            user_sessions_total = user_sessions_total - 1
-            print(f'{len(user_sessions_total)} sessions ended for user: {user_email}')
-
+        print(f'{len(user_sessions)} sessions ended for user: {user_email}')
 
 
 if __name__ == '__main__':
