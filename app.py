@@ -30,7 +30,7 @@ def index():
         email = request.form['email']
         session['email'] = email  # Store email in session
         return redirect(url_for('get_email'))
-    return render_template('index.html', message=None)
+    return render_template('index.html', user_email=user_upn)
 
 @app.route('/get-email', methods=['GET'])
 def get_email():
