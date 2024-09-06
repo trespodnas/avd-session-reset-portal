@@ -1,6 +1,9 @@
 from time import sleep
 from functools import wraps
 
+from helpers.session_reset import end_user_session
+
+DEFAULT_SLEEP_TIME = 9
 
 def add_sleep_time(seconds):
     def decorator(func):
@@ -10,3 +13,7 @@ def add_sleep_time(seconds):
             return func(*args, **kwargs)
         return wrapper
     return decorator
+
+
+def delayed_end_user_session(user_upn, sleep_time=DEFAULT_SLEEP_TIME):
+    return sleep(sleep_time), end_user_session(user_upn)

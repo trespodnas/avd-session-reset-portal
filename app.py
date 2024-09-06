@@ -1,19 +1,23 @@
 import  random
 import string
 
-from helpers.session_reset import end_user_session
-from helpers.background_executor import process_task
+from helpers.sleeper import delayed_end_user_session
 
+from flask_executor import Executor
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 
 APPLICATION_PORT = 5000
 APPLICATION_DEBUG = False
+APPLICATION_THREADED = True
 
 
 token_for_flask_secret_key = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits)
+
                                      for _ in range(50))
 app = Flask(__name__)
+executor = Executor(app)
 app.secret_key = token_for_flask_secret_key
+
 
 @app.route('/api/upn', methods=['POST'])
 def get_user_session_upn():
@@ -25,6 +29,7 @@ def get_user_session_upn():
         return jsonify({"status": "UPN received"}), 200
     return jsonify({"status": "UPN not received"}), 400
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -34,12 +39,12 @@ def index():
     user_upn = session.get('user_upn', 'enter_your@email.here')
     return render_template('index.html', user_email=user_upn)
 
+
 @app.route('/get-email', methods=['GET'])
 def get_email():
     email = session.get('email')  # Retrieve email from session
     if email: # == user_upn:
-        # processed_email = end_user_session(email)
-        process_task(end_user_session, [email,])
+        executor.submit(delayed_end_user_session, user_upn)
         session.pop('email', None)  # Clear the session
         message = f"Session disconnect for: {email} successfully submitted."
         return render_template('success.html', message=message)
@@ -47,5 +52,6 @@ def get_email():
         print('User and UPN mismatch')
     return redirect(url_for('index'))
 
+
 if __name__ == '__main__':
-    app.run(debug=APPLICATION_DEBUG, threaded=True, port=APPLICATION_PORT)
+    app.run(debug=APPLICATION_DEBUG, threaded=APPLICATION_THREADED, port=APPLICATION_PORT)
