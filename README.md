@@ -1,12 +1,13 @@
 # avd-session-reset-portal
-* A simple flask app that removes avd users disconnected sessions.<br>
-* Currenly only scoped to be used in azure gov cloud. <br>
 * Runs as a remote app in avd
+* A simple self-serve portal that allows avd users to disconnect/logoff stuck sessions<br>
+* Currently only scoped to be used in azure gov cloud. <br>
+
 
 
 ### TODO:
 * error handling
 * logging
-* create generic install
+* create generic installer
 * include commercial support
 * 
