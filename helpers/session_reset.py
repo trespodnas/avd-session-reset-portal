@@ -48,7 +48,7 @@ def find_user_session_data(user_email):
     upn = user_email.strip().lower()
     user_sessions = []
     if '@' in upn:
-        # print(user_email)
+        print(user_email)
         for host_pool_info in list_all_host_pools():
             resource_group = host_pool_info['resource_group']
             host_pool_name = host_pool_info['host_pool_name']
@@ -76,8 +76,7 @@ def end_user_session(user_email):
         parse_session_host_application_type = session_data['application_type']
         session_host_name = parse_session_host_and_user_session_id[1]
         user_session_id = parse_session_host_and_user_session_id[2]
-        if not parse_session_host_application_type == 'RemoteApp':
-            avd_client.user_sessions.delete(
+        avd_client.user_sessions.delete(
                 session_data['resource_group'],
                 session_data['host_pool_name'],
                 session_host_name,
