@@ -1,7 +1,7 @@
 import  random
 import string
 
-from helpers.sleeper import delayed_end_user_session
+from helpers.sleeper import end_user_session_delayed
 
 from flask_executor import Executor
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
@@ -14,6 +14,7 @@ APPLICATION_THREADED = True
 token_for_flask_secret_key = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits)
 
                                      for _ in range(50))
+
 app = Flask(__name__)
 executor = Executor(app)
 app.secret_key = token_for_flask_secret_key
@@ -36,15 +37,14 @@ def index():
         email = request.form['email']
         session['email'] = email  # Store email in session
         return redirect(url_for('get_email'))
-    user_upn = session.get('user_upn', 'enter_your@email.here')
     return render_template('index.html', user_email=user_upn)
 
 
 @app.route('/get-email', methods=['GET'])
 def get_email():
     email = session.get('email')  # Retrieve email from session
-    if email: # == user_upn:
-        executor.submit(delayed_end_user_session, user_upn)
+    if email == user_upn:
+        executor.submit(end_user_session_delayed, user_upn)
         session.pop('email', None)  # Clear the session
         message = f"Session disconnect for: {email} successfully submitted."
         return render_template('success.html', message=message)

@@ -15,5 +15,9 @@ def add_sleep_time(seconds):
     return decorator
 
 
-def delayed_end_user_session(user_upn, sleep_time=DEFAULT_SLEEP_TIME):
+def end_user_session_delayed(user_upn, sleep_time=DEFAULT_SLEEP_TIME):
     return sleep(sleep_time), end_user_session(user_upn)
+
+
+if __name__ == '__main__':
+    exit(0)
