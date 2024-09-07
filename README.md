@@ -6,8 +6,8 @@
 
 
 ### TODO:
+* create installer
 * error handling
 * logging
-* create generic installer
 * include commercial support
 * 
