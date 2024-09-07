@@ -25,16 +25,26 @@
         }
     </style>
     <script>
-        setTimeout(function() {
-            window.location.href = "/";
-        }, 15000);
+        function startCountdown() {
+            var countdown = 10;
+            var countdownElement = document.getElementById("countdown");
+
+            var interval = setInterval(function() {
+                countdownElement.innerHTML = countdown;
+                countdown--;
+
+                if (countdown < 0) {
+                    clearInterval(interval);
+                    window.location.href = "/";                }
+            }, 1000);
+        }
     </script>
 </head>
-<body>
+<body onload="startCountdown()">
     <div class="container">
         <img src="{{ url_for('static', filename='usaf_logo.png') }}" alt="USAF Logo">
         <h1>{{ message }}</h1>
-        <p>This application will close out in 10 seconds...</p>
+        <p>This application will close out in <span id="countdown">10</span> seconds...</p>
     </div>
 </body>
 </html>

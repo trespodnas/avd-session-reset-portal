@@ -48,12 +48,10 @@ def find_user_session_data(user_email):
     upn = user_email.strip().lower()
     user_sessions = []
     if '@' in upn:
-        print(user_email)
         for host_pool_info in list_all_host_pools():
             resource_group = host_pool_info['resource_group']
             host_pool_name = host_pool_info['host_pool_name']
             for user_data in list_user_sessions(resource_group, host_pool_name):
-                # print(user_data)
                 if upn == user_data.user_principal_name:
                     user_sessions.append({'session_host_name': user_data.name,
                             'upn': user_data.user_principal_name,
