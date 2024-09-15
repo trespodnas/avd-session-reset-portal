@@ -25,18 +25,6 @@
         }
     </style>
     <script>
-        function checkUPN() {
-            var user_upn = "{{ user_upn }}"; // Get the user UPN passed from Flask
-
-            if (!user_upn || user_upn === "None") {  // If user_upn is not rendered or empty
-                console.log("user_upn not found, refreshing the page in 3 seconds...");
-                setTimeout(function() {
-                    location.reload();  // Reload the page after 3 seconds
-                }, 3000);
-            } else {
-                console.log("user_upn found: " + user_upn);
-            }
-        }
         function startCountdown() {
             var countdown = 10;
             var countdownElement = document.getElementById("countdown");
