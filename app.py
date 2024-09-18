@@ -11,6 +11,12 @@ APPLICATION_DEBUG = False
 APPLICATION_THREADED = True
 
 
+session_data = {
+    'dummy_upn' : 'enter_your_email_address@here.org',
+    'session_state' : {}
+}
+
+
 token_for_flask_secret_key = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits)
 
                                      for _ in range(50))
@@ -22,11 +28,10 @@ app.secret_key = token_for_flask_secret_key
 
 @app.route('/api/upn', methods=['POST'])
 def get_user_session_upn():
-    global user_upn
     upn = request.form.get('upn')
     if upn:
         session['upn'] = upn
-        user_upn = upn
+        session_data['session_state'][upn] = upn
         return jsonify({"status": "UPN received"}), 200
     return jsonify({"status": "UPN not received"}), 400
 
@@ -35,16 +40,16 @@ def get_user_session_upn():
 def index():
     if request.method == 'POST':
         email = request.form['email']
-        session['email'] = email  # Store email in session
+        session['email'] = email
         return redirect(url_for('get_email'))
-    return render_template('index.html', user_email=user_upn)
+    return render_template('index.html', user_email=session_data['dummy_upn'])
 
 
 @app.route('/get-email', methods=['GET'])
 def get_email():
     email = session.get('email')  # Retrieve email from session
-    if email == user_upn:
-        executor.submit(end_user_session_delayed, user_upn)
+    if email in session_data['session_state']:
+        executor.submit(end_user_session_delayed, email)
         session.pop('email', None)  # Clear the session
         message = f"Session disconnect for: {email} successfully submitted."
         return render_template('success.html', message=message)
