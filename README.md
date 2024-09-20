@@ -1,7 +1,23 @@
-# avd-session-reset-portal
-* Runs as a remote app in avd
+# Avd-session-reset-portal
+
+
+###### Application front page:
+![AVD-session-reset-portal-main-page](setup/images/AVD-reset-portal-main-page.png)
+
+###### Application success page:
+![AVD-session-reset-portal-success-page](setup/images/AVD-session-reset-portal-success-page.png)
+
+### About:
 * A simple self-serve portal that allows avd users to disconnect/logoff their stuck sessions<br>
-* Currently only scoped to be used in azure gov cloud. <br>
+* Runs as a remote app in avd <br>
+* Currently only scoped to be used in azure gov cloud <br>
+
+### Requirements:
+* Host pool w/one windows 10/11 multi-session vm (2x8)
+* Managed identity with the following role assignment:
+    * Desktop Virtualization Contributor
+* Assignment of managed identity to host pool/vm(s)
+
 
 
 
@@ -10,4 +26,4 @@
 * error handling
 * logging
 * include commercial support
-* 
+* IaC for managed identity creation.
