@@ -8,7 +8,7 @@
 ![AVD-session-reset-portal-success-page](setup/images/AVD-session-reset-portal-success-page.png)
 
 ### About:
-* A simple self-serve portal that allows avd users to disconnect/logoff their stuck sessions<br>
+* A simple self-serve portal that allows avd users to disconnect/logoff their stuck sessions <br>
 * Runs as a remote app in avd <br>
 * Currently only scoped to be used in azure gov cloud <br>
 
@@ -18,7 +18,7 @@
     * Desktop Virtualization Contributor
 * Assignment of managed identity to host pool/vm(s)
 
-
+ ### Setup
 
 
 ### TODO:
