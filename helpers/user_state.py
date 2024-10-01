@@ -23,6 +23,7 @@ def get_user_upn_from_state(email):
     else:
         return None
 
+
 def get_user_token_from_state(email):
     user_data = session_data['session_state'].get(email)
     if user_data:
