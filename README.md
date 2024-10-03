@@ -18,7 +18,7 @@
     * Desktop Virtualization Contributor
 * Assignment of managed identity to host pool/vm(s) (user assigned)
 
- ### Setup
+### Setup
 
 
 ### TODO:
