@@ -1,9 +1,11 @@
+from os import getenv
+
 from azure.identity import ManagedIdentityCredential, AzureAuthorityHosts
 from azure.mgmt.desktopvirtualization import DesktopVirtualizationMgmtClient
 
-AZURE_SUBSCRIPTION_ID = ''
-AZURE_RESOURCE_GROUP_NAME = ''
-MANAGED_IDENTITY_CLIENT_ID = ''
+AZURE_SUBSCRIPTION_ID = getenv('AZURE_SUBSCRIPTION_ID', None)
+AZURE_RESOURCE_GROUP_NAME = getenv('AZURE_RESOURCE_GROUP_NAME', None)
+MANAGED_IDENTITY_CLIENT_ID = getenv('MANAGED_IDENTITY_CLIENT_ID', None)
 AZURE_DESKTOP_VIRTUALIZATION_MGMT_CLIENT_API_VERSION = '2019-09-24-preview'
 
 api_data = {}
