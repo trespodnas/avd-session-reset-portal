@@ -1,12 +1,6 @@
 # Avd-session-reset-portal
 
 
-###### Application front page:
-![AVD-session-reset-portal-main-page](setup/images/AVD-reset-portal-main-page.png)
-
-###### Application success page:
-![AVD-session-reset-portal-success-page](setup/images/AVD-session-reset-portal-success-page.png)
-
 ### About:
 * A simple self-serve portal that allows avd users to disconnect/logoff their stuck sessions <br>
 * Runs as a remote app in avd <br>
@@ -22,8 +16,16 @@
 
 
 ### TODO:
-* create installer
+* further refinements for setup script
 * error handling
 * logging
 * include commercial support
-* IaC for managed identity creation.
+
+
+###### Application front page:
+![AVD-session-reset-portal-main-page](setup/images/AVD-reset-portal-main-page.png)
+
+###### Application success page:
+![AVD-session-reset-portal-success-page](setup/images/AVD-session-reset-portal-success-page.png)
+
+
