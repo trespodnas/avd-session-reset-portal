@@ -7,7 +7,8 @@
 * Currently only scoped to be used in azure gov cloud <br>
 
 ### Requirements:
-* Host pool w/one windows 10/11 multi-session vm (2x8)
+* Host pool w/one windows 11 multi-session vm (2x8)
+* Python 3.12.5 & git loaded on environment (win11)
 * Managed identity with the following role assignment:
     * Desktop Virtualization Contributor
 * Assignment of managed identity to host pool/vm(s) (user assigned)

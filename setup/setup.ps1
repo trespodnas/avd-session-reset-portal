@@ -260,7 +260,24 @@ try {
     exit 1
 }
 
+<#
+Create login script for users.
+This script collects the users UPN upon login and sends a POST
+request to the application endpoint.
+#>
+
 Write-Host "Script completed successfully."
+
+$appName = "UPN Collector"
+$appPath = "$BaseDir\helpers\get_upn_on_logon.ps1"
+
+# Define the registry path for the current user
+$regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
+
+# Add the application to the registry
+Set-ItemProperty -Path $regPath -Name $appName -Value $appPath
+
+Write-Output "Application $appName added to Windows logon."
 
 Stop-Transcript
 
