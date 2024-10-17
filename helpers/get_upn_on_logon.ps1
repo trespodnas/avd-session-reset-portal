@@ -1,7 +1,7 @@
 # Capture user upn when user logs in and send to flask/API
 
-# Toggle logging on or off
-$EnableLogging = $true  # Set to $false to disable logging
+# Set to $false to disable logging
+$EnableLogging = $true
 
 $currentDir = Get-Location
 
