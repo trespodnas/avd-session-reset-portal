@@ -270,7 +270,7 @@ request to the application endpoint.
 #>
 
 $appName = "UPN Collector"
-$appPath = "$BaseDir\helpers\get_upn_on_logon.ps1"
+$appPath = "powershell" .\$BaseDir\helpers\get_upn_on_logon.ps1
 # Define the registry path for the current user
 $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
 # Add the application to the registry

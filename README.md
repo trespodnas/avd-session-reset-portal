@@ -19,7 +19,7 @@
   * $MANAGED_IDENTITY_CLIENT_ID = ""
   * $AZURE_SUBSCRIPTION_ID = ""
   * $AZURE_RESOURCE_GROUP_NAME = ""
-* Add setup script to your build process or manually run on host(s)
+* Add setup script to your build process or manually run on host(s) w/elevated privileges.
 
 
 ### TODO:
