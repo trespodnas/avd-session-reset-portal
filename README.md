@@ -13,7 +13,12 @@
     * Desktop Virtualization Contributor
 * Assignment of managed identity to host pool/vm(s) (user assigned)
 
-### Setup
+### Setup:
+* Download the setup script from [here](https://raw.githubusercontent.com/trespodnas/avd-session-reset-portal/refs/heads/main/setup/setup.ps1): 
+  * Open up the script & change the following variables (lines 6-8):
+  * $MANAGED_IDENTITY_CLIENT_ID = ""
+  * $AZURE_SUBSCRIPTION_ID = ""
+  * $AZURE_RESOURCE_GROUP_NAME = ""
 
 
 ### TODO:
