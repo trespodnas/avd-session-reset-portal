@@ -7,7 +7,7 @@
 * Currently only scoped to be used in azure gov cloud <br>
 
 ### Requirements:
-* Host pool w/one windows 11 multi-session vm (2x8)
+* Host pool w/one windows 11 multi-session vm (2x8) and a RemoteApp
 * Python 3.12.5 & git loaded on environment (win11)
 * A local GPO (gpedit.msc) must be set on host machines that kicks off the get_upn_on_logon.ps1 upon user logon.
   this can be found under: LocalGroupPolicyEditor >> "User Configuration" >> "Windows Settings" >> "Scripts (Logon/Logoff)".
@@ -24,7 +24,10 @@
   * $MANAGED_IDENTITY_CLIENT_ID = ""
   * $AZURE_SUBSCRIPTION_ID = ""
   * $AZURE_RESOURCE_GROUP_NAME = ""
-* Add setup script to your build process or manually run on host(s) w/elevated privileges.
+* Add setup script to your build process or manually run on hostpool/host(s) w/elevated privileges.
+* Your build process (or manual process) should contain the following values when creating the RemoteApp associated with your host pool:
+  * application path: c:\Program Files\avd-reset-portal\avd-remote-app-settings\scripts\remote-app-start-kiosk.cmd
+  * icon path: c:\Program Files\avd-reset-portal\avd-remote-app-settings\icon\reset-portal-remote-app-icon.png
 
 
 ### TODO:
