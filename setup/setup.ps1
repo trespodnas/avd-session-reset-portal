@@ -17,6 +17,19 @@ some other build process.
 
 Start-Transcript -Path $logFile -Append
 
+<#
+Create exclusion for defender
+#>
+$excludeFilePath = "C:\Temp\exclude.txt"
+$excludeContent = @"
+Computer
+Software\Policies\Microsoft\Windows Defender\Exclusions\Paths
+C:\program files\avd-reset-portal.venv\scripts
+SZ:0
+"@
+Set-Content -Path $excludeFilePath -Value $excludeContent
+LGPO.exe /t $excludeFilePath /q
+
 
 <#
 Create needed directories for install
